@@ -1,7 +1,8 @@
 /*input
-5 2 1
+10 3 1
+2 4
 2 3
-2 5
+8 10
 */
 
 /*
@@ -84,7 +85,7 @@ void main()
 		scanf("%lli %lli ", &set[0][i], &set[1][i]);
 	}
 	quickSortSets(set,0,N-1);
-	//display(set,0,N-1);
+	display(set,0,N-1);
 	if(K==0)
 	{
 		for(i=0; i<N-1; i++)
@@ -99,13 +100,13 @@ void main()
 	}
 	else
 	{
-		int flag=0;
+		long int flag=-1;
 		long long int maxdiff=set[0][0]-1;
 		for(i=0; i<N-1; i++)
 		{
 			if(set[0][i+1]<set[1][i])
 			{
-				if(flag>=1)
+				if(flag>=0)
 				{
 					printf("Bad\n");
 					return;
@@ -114,7 +115,7 @@ void main()
 					flag=i;
 			}
 			if(set[0][i+1]-set[1][i]>maxdiff)
-				maxdiff=set[1][i]-set[0][i+1];
+				maxdiff=set[0][i+1]-set[1][i]-1;
 		}
 		if(set[1][flag]-set[0][flag]+1<=maxdiff||set[1][flag+1]-set[0][flag+1]+1<=maxdiff)
 		{
