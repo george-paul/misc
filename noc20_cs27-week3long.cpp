@@ -12,23 +12,23 @@ using namespace std;
 class City
 {
 public:
-	int no=0;
-	int mus=0;
-	int visited=0;
-	vector<int> adj{};
+	long long int no=0;
+	long long int mus=0;
+	long long int visited=0;
+	vector<long long int> adj{};
 };
 
-int N, M, K;
+long long int N, M, K;
 vector<City> cities;
 //vector<City> Tcities;
 
-// void sortCities(vector<City> &Tcities, int lower, int upper)
+// void sortCities(vector<City> &Tcities, long long int lower, long long int upper)
 // {
 // 	if(upper<=lower)
 // 		return;
 // 	City temp;
-// 	int pivot=Tcities[upper].mus;
-// 	int lesser=lower, i;
+// 	long long int pivot=Tcities[upper].mus;
+// 	long long int lesser=lower, i;
 // 	for(i=lower; i<upper; i++)
 // 	{
 // 		if(Tcities[i].mus<pivot)
@@ -47,11 +47,11 @@ vector<City> cities;
 // 	return;
 // }
 
-int MAXmus()
+long long int MAXmus()
 {
-	int val=-1;
-	int pos=0;
-	for(int i=0; i<N; i++)
+	long long int val=-1;
+	long long int pos=0;
+	for(long long int i=0; i<N; i++)
 	{
 		if(cities[i].mus>cities[pos].mus && !(cities[i].visited))
 		{
@@ -62,11 +62,11 @@ int MAXmus()
 	return cities[pos].no;
 }
 
-int MINmus()
+long long int MINmus()
 {
-	int val=INT_MAX;
-	int pos=0;
-	for(int i=0; i<N; i++)
+	long long int val=LLONG_MAX;
+	long long int pos=0;
+	for(long long int i=0; i<N; i++)
 	{
 		if(cities[i].mus<val && !(cities[i].visited))
 		{
@@ -77,9 +77,9 @@ int MINmus()
 	return cities[pos].no;
 }
 
-int citiesUnvisited()
+long long int citiesUnvisited()
 {
-	for(int i=0; i<N; i++)
+	for(long long int i=0; i<N; i++)
 	{
 		if(cities[i].visited==0)
 		{
@@ -89,10 +89,10 @@ int citiesUnvisited()
 	return 0;
 }
 
-int Month(int pos)
+long long int Month(long long int pos)
 {
-	queue<int> q;
-	int i, sum=cities[pos].mus;
+	queue<long long int> q;
+	long long int i, sum=cities[pos].mus;
 	q.push(pos);
 	cities[pos].visited=1;
 	while(!q.empty())
@@ -101,7 +101,7 @@ int Month(int pos)
 		q.pop();
 		for(auto j=cities[i].adj.begin(); j!=cities[i].adj.end(); j++)
 		{
-			int a=*j;
+			long long int a=*j;
 			if(!cities[a].visited)
 			{
 				cities[a].visited=1;
@@ -113,9 +113,9 @@ int Month(int pos)
 	return sum;
 }
 
-int Fun()
+long long int Fun()
 {
-	int i, sumOfMuseums=0;
+	long long int i, sumOfMuseums=0;
 	//Tcities = cities;
 	for(i=0; i<K&&citiesUnvisited(); i++)
 	{
@@ -139,11 +139,11 @@ int Fun()
 int main()
 {
 	freopen("C:/SSDFiles/GitStuff/misc/input.txt", "r", stdin);				//text input
-	int i, u, v;
+	long long int i, u, v;
 	City c;
 
 	cin>>N>>M>>K;
-	for (int i=0; i<N; i++)
+	for (long long int i=0; i<N; i++)
 	{
 		cities.push_back(c);
 	}
